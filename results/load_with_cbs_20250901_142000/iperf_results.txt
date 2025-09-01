@@ -1,0 +1,2 @@
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total
+[  5]   0.00-60.00  sec   600 MBytes  80.0 Mbits/sec  1.123 ms  12/8521 (0.14%)

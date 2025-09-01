@@ -1,0 +1,26 @@
+---
+# CBS Configuration for LAN9692
+# TC3 for video traffic (PCP 3) - 20Mbps reserved
+# TC0 for background traffic (PCP 0) - 60Mbps
+
+# PCP to TC mapping
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class-table[traffic-class-table-id=1]/priority-map[priority='0']": 0
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class-table[traffic-class-table-id=1]/priority-map[priority='3']": 3
+
+# CBS parameters for TC3 (video)
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/stream-filters/stream-filter-instance-table[stream-filter-instance-id=1]/stream-handle": 1
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/stream-filters/stream-filter-instance-table[stream-filter-instance-id=1]/priority-spec/priority": 3
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/stream-filters/stream-filter-instance-table[stream-filter-instance-id=1]/max-sdu-size": 1522
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/stream-filters/stream-filter-instance-table[stream-filter-instance-id=1]/stream-gate-ref": 1
+
+# CBS bandwidth allocation
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class[traffic-class-index=3]/queue-max-sdu": 1522
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class[traffic-class-index=3]/transmission-selection-algorithm": 3
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class[traffic-class-index=3]/ieee802-dot1q-sched:gate-parameters/idle-slope": 20000
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class[traffic-class-index=3]/ieee802-dot1q-sched:gate-parameters/send-slope": 80000
+
+# CBS for TC0 (background)
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class[traffic-class-index=0]/queue-max-sdu": 1522
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class[traffic-class-index=0]/transmission-selection-algorithm": 3
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class[traffic-class-index=0]/ieee802-dot1q-sched:gate-parameters/idle-slope": 60000
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/traffic-class[traffic-class-index=0]/ieee802-dot1q-sched:gate-parameters/send-slope": 40000

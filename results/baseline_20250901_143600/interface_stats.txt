@@ -1,0 +1,6 @@
+12: enp8s0.100@enp8s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000
+    link/ether 00:e0:4c:68:be:62 brd ff:ff:ff:ff:ff:ff
+    RX:  bytes packets errors dropped  missed   mcast           
+          9669      69      0       0       0      69 
+    TX:  bytes packets errors dropped carrier collsns           
+         12172      89      0       0       0       0 

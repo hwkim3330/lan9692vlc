@@ -1,0 +1,15 @@
+---
+# Configure VLAN 100 on ports 8 and 11
+- "/ietf-interfaces:interfaces/interface[name='8']/enabled": true
+- "/ietf-interfaces:interfaces/interface[name='8']/ieee802-dot1q-bridge:bridge-port/pvid": 100
+- "/ietf-interfaces:interfaces/interface[name='8']/ieee802-dot1q-bridge:bridge-port/acceptable-frame": "ieee802-dot1q-bridge:admit-all-frames"
+- "/ietf-interfaces:interfaces/interface[name='8']/ieee802-dot1q-bridge:bridge-port/enable-native-vlan": true
+
+- "/ietf-interfaces:interfaces/interface[name='11']/enabled": true
+- "/ietf-interfaces:interfaces/interface[name='11']/ieee802-dot1q-bridge:bridge-port/pvid": 100
+- "/ietf-interfaces:interfaces/interface[name='11']/ieee802-dot1q-bridge:bridge-port/acceptable-frame": "ieee802-dot1q-bridge:admit-all-frames"
+- "/ietf-interfaces:interfaces/interface[name='11']/ieee802-dot1q-bridge:bridge-port/enable-native-vlan": true
+
+# Configure VLAN 100
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/filtering-database/vlan-registration-entry[vlan='100']/port-map[port-ref='8']/vlan-transmitted": "ieee802-dot1q-bridge:tagged"
+- "/ieee802-dot1q-bridge:bridges/bridge[name='br0']/component[name='br0']/filtering-database/vlan-registration-entry[vlan='100']/port-map[port-ref='11']/vlan-transmitted": "ieee802-dot1q-bridge:tagged"
